@@ -1,0 +1,83 @@
+apiVersion: jenkins.io/v1
+kind: Scheduler
+metadata:
+  name: seldon-core-scheduler
+spec:
+  lgtm:
+    reviewActsAsLgtm: true
+  merger:
+    mergeMethod: rebase
+  plugins:
+    entries:
+      - label
+  postsubmits:
+    replace: true
+    entries:
+    - agent: tekton
+      branches:
+        entries:
+        - master
+      name: release
+      context: ""
+  presubmits:
+    replace: true
+    entries:
+    - agent: tekton
+      alwaysRun: true
+      context: pr-build
+      name: pr-build
+      queries:
+      - labels:
+          entries:
+          - approved
+        missingLabels:
+          entries:
+          - do-not-merge
+          - do-not-merge/hold
+          - do-not-merge/work-in-progress
+          - needs-ok-to-test
+          - needs-rebase
+          - needs-security-review
+      report: true
+      rerunCommand: /test this
+      trigger: (?m)^/test( all| this),?(\s+|$)
+    - agent: tekton
+      alwaysRun: false
+      context: integration
+      name: integration
+      queries:
+      - labels:
+          entries:
+          - approved
+        missingLabels:
+          entries:
+          - do-not-merge
+          - do-not-merge/hold
+          - do-not-merge/work-in-progress
+          - needs-ok-to-test
+          - needs-rebase
+          - needs-security-review
+      report: true
+      rerunCommand: /test integration
+      trigger: (?m)^/test( all| integration),?(\s+|$)
+    - agent: tekton
+      alwaysRun: true
+      context: lint
+      name: lint
+      queries:
+      - labels:
+          entries:
+          - approved
+          - lgtm
+        missingLabels:
+          entries:
+          - do-not-merge
+          - do-not-merge/hold
+          - do-not-merge/work-in-progress
+          - needs-ok-to-test
+          - needs-rebase
+          - needs-security-review
+      report: true
+      rerunCommand: /test lint
+      trigger: (?m)^/test( all| lint),?(\s+|$)
+

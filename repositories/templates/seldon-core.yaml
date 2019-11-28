@@ -1,0 +1,15 @@
+apiVersion: jenkins.io/v1
+kind: SourceRepository
+metadata:
+  labels:
+    owner: seldondev
+    provider: github
+    repository: jenkins-x-seldon-core-sandbox
+  name: seldonio-jenkins-x-seldon-core-sandbox
+  namespace: jx
+spec:
+  description: Imported application for SeldonIO/seldon-core
+  provider: https://github.com
+  providerName: github
+  org: SeldonIO
+  repo: jenkins-x-seldon-core-sandbox

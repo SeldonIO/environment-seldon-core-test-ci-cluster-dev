@@ -1,0 +1,74 @@
+autoUpdate:
+  enabled: false
+  schedule: ""
+bootConfigURL: https://github.com/jenkins-x/jenkins-x-boot-config.git
+cluster:
+  clusterName: seldon-core-test-ci-cluster
+  environmentGitOwner: seldonio
+  gitKind: github
+  gitName: github
+  gitServer: https://github.com
+  namespace: jx
+  project: seldon-core-ops
+  provider: kubernetes
+  registry: gcr.io
+  zone: europe-west2-b
+environments:
+- ingress:
+    domain: 34.89.21.73.nip.io
+    externalDNS: false
+    namespaceSubDomain: -jx.
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: dev
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: staging
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: production
+gitops: true
+ingress:
+  domain: 34.89.21.73.nip.io
+  externalDNS: false
+  namespaceSubDomain: -jx.
+  tls:
+    email: ""
+    enabled: false
+    production: false
+kaniko: true
+repository: nexus
+secretStorage: vault
+storage:
+  backup:
+    enabled: false
+    url: ""
+  logs:
+    enabled: false
+    url: ""
+  reports:
+    enabled: false
+    url: ""
+  repository:
+    enabled: false
+    url: ""
+vault: {}
+velero: {}
+versionStream:
+  ref: v1.0.158
+  url: https://github.com/jenkins-x/jenkins-x-versions.git
+webhook: prow

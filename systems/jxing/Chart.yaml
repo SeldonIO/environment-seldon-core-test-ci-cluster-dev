@@ -1,0 +1,7 @@
+apiVersion: v1
+description: Ingress Chart
+icon: https://raw.githubusercontent.com/nginxinc/kubernetes-ingress/v1.5.5/deployments/helm-chart/chart-icon.png
+maintainers:
+- name: Team
+name: jxing
+version: "1"

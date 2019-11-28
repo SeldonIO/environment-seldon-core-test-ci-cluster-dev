@@ -1,0 +1,14 @@
+external-dns:
+  enabled: {{ .Requirements.ingress.externalDNS }}
+  sources:
+  - ingress
+  provider: google
+  google:
+    serviceAccountSecret: external-dns-gcp-sa
+ {{ if .Requirements.cluster.project }}
+    project: "{{ .Requirements.cluster.project }}"
+ {{ end }}
+  rbac:
+    create: true
+  domainFilters:
+  - "{{ .Requirements.ingress.domain }}"

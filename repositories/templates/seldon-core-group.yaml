@@ -1,0 +1,12 @@
+apiVersion: jenkins.io/v1
+kind: SourceRepositoryGroup
+metadata:
+  name: seldon-core-group
+spec:
+  scheduler:
+    apiVersion: jenkins.io/v1
+    kind: Scheduler
+    name: seldon-core-scheduler
+  repositories: 
+  - name: seldonio-jenkins-x-seldon-core-sandbox
+    kind: SourceRepository
