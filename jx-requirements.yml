@@ -15,7 +15,7 @@ cluster:
   zone: europe-west2-b
 environments:
 - ingress:
-    domain: 34.89.21.73.nip.io
+    domain: 68.183.253.169.nip.io
     externalDNS: false
     namespaceSubDomain: -jx.
     tls:
@@ -66,6 +66,7 @@ storage:
   repository:
     enabled: false
     url: ""
+vault: {}
 velero: {}
 versionStream:
   ref: v1.0.226

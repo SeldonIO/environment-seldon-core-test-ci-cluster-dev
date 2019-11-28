@@ -1,10 +1,10 @@
 adminUser:
-  password: vault:jx-production-cluster/adminUser:password
+  password: local:seldon-core-test-ci-cluster/adminUser:password
   username: admin
 enableDocker: false
 pipelineUser:
   email: devext@seldon.io
-  token: vault:jx-production-cluster/pipelineUser:token
+  token: local:seldon-core-test-ci-cluster/pipelineUser:token
   username: seldondev
 prow:
-  hmacToken: vault:jx-production-cluster/prow:hmacToken
+  hmacToken: local:seldon-core-test-ci-cluster/prow:hmacToken
