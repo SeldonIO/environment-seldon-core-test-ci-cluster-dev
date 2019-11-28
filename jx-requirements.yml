@@ -43,7 +43,7 @@ environments:
   key: production
 gitops: true
 ingress:
-  domain: ""
+  domain: 68.183.253.169.nip.io
   externalDNS: false
   namespaceSubDomain: -jx.
   tls:
@@ -52,7 +52,7 @@ ingress:
     production: false
 kaniko: true
 repository: nexus
-secretStorage: vault
+secretStorage: local
 storage:
   backup:
     enabled: false
@@ -66,6 +66,8 @@ storage:
   repository:
     enabled: false
     url: ""
-vault: {}
 velero: {}
+versionStream:
+  ref: v1.0.226
+  url: https://github.com/jenkins-x/jenkins-x-versions.git
 webhook: prow
